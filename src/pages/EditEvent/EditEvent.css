@@ -1,0 +1,46 @@
+.edit-event-container {
+  min-height: calc(100vh - 140px);
+  padding: 1.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.edit-event-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 500px;
+  margin: 0.5rem 0;
+}
+
+.edit-event-card h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.6rem;
+  color: #333;
+  text-align: center;
+}
+
+.current-image-info {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0.5rem 0;
+}
+
+.current-image-info a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.current-image-info a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .edit-event-card {
+    max-width: 100%;
+  }
+}

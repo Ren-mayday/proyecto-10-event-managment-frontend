@@ -1,0 +1,32 @@
+footer {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 2rem;
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.footer-content strong {
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding: 1rem;
+  }
+
+  .footer-content p {
+    font-size: 0.85rem;
+  }
+}

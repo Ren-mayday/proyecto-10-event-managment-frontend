@@ -1,0 +1,296 @@
+/* ======================
+   IMPORTS & RESET
+   ====================== */
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f0f0f0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#main {
+  flex: 1;
+}
+
+/* ======================
+   UTILITY CLASSES
+   ====================== */
+
+/* Containers */
+.page-container {
+  min-height: calc(100vh - 140px);
+  padding: 1.5rem 1rem;
+  background: #f0f0f0;
+}
+
+.page-container-centered {
+  min-height: calc(100vh - 140px);
+  padding: 1.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Cards */
+.card {
+  background: white;
+  padding: 1.2rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+}
+
+.card-sm {
+  max-width: 420px;
+  padding: 1.5rem 1.2rem;
+}
+.card-md {
+  max-width: 500px;
+}
+.card-lg {
+  max-width: 650px;
+}
+.card-xl {
+  max-width: 850px;
+}
+
+.card-title {
+  margin: 0 0 0.8rem 0;
+  font-size: 1.4rem;
+  color: #333;
+  text-align: center;
+}
+
+.card-subtitle {
+  text-align: center;
+  color: #666;
+  margin: 0 0 1.2rem 0;
+  font-size: 0.9rem;
+}
+
+/* Forms */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.file-input {
+  padding: 0.5rem !important;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+/* Messages */
+.error-message {
+  background: #fee;
+  color: #c33;
+  padding: 0.7rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin: 0;
+  border-left: 4px solid #c33;
+}
+
+.success-message {
+  background: #e6ffed;
+  color: #22543d;
+  padding: 0.7rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin: 0;
+  border-left: 4px solid #38a169;
+}
+
+.error-text {
+  color: #e53e3e;
+  font-weight: 500;
+}
+.info-text {
+  color: #718096;
+}
+.text-center {
+  text-align: center;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Links */
+.link {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.link-section {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #666;
+}
+
+/* Grids */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid-auto {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+/* Avatars */
+.avatar {
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.avatar-sm {
+  width: 80px;
+  height: 80px;
+  font-size: 1.8rem;
+}
+.avatar-md {
+  width: 100px;
+  height: 100px;
+  font-size: 2rem;
+}
+.avatar-lg {
+  width: 120px;
+  height: 120px;
+  font-size: 2.5rem;
+}
+.avatar-xl {
+  width: 150px;
+  height: 150px;
+  font-size: 3rem;
+}
+
+/* Badges */
+.badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-admin {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: #333;
+}
+
+.badge-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+/* Sections */
+.section {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 8px;
+}
+
+.section-title {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  color: #2d3748;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 0.5rem;
+}
+
+/* Gradients */
+.gradient-purple {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-pink {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+/* ======================
+   RESPONSIVE
+   ====================== */
+@media (max-width: 768px) {
+  .page-container,
+  .page-container-centered {
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .card-sm,
+  .card-md,
+  .card-lg,
+  .card-xl {
+    max-width: 100%;
+  }
+
+  .card-title {
+    font-size: 1.3rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .grid-auto {
+    grid-template-columns: 1fr;
+  }
+
+  .avatar-lg {
+    width: 100px;
+    height: 100px;
+    font-size: 2rem;
+  }
+  .avatar-xl {
+    width: 120px;
+    height: 120px;
+    font-size: 2.5rem;
+  }
+}
