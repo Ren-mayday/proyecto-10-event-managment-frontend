@@ -17,10 +17,16 @@ export const login = async (email, password) => {
 };
 
 // Register
-export const register = async (userName, email, password) => {
+export const register = async (userName, email, password, securityQuestion, securityAnswer) => {
   const data = await apiFetch("/users/register", {
     method: "POST",
-    body: JSON.stringify({ userName, email, password }),
+    body: JSON.stringify({
+      userName,
+      email,
+      password,
+      securityQuestion,
+      securityAnswer,
+    }),
   });
 
   // Guardar token y usuario en localStorage
@@ -53,4 +59,37 @@ export const getCurrentUser = () => {
 export const isAdmin = () => {
   const user = getCurrentUser();
   return user?.role === "admin";
+};
+
+// Request password reset - paso 1: obtener pregunta de seguridad
+export const requestPasswordReset = async (identifier) => {
+  const data = await apiFetch("users/forgot-password", {
+    method: "POST",
+    body: JSON.stringify({
+      userName: identifier,
+      email: identifier,
+    }),
+  });
+
+  return data;
+};
+
+// Reset password - paso 2: validar respuesta y cambiar contraseña
+export const resetPassword = async (userId, securityAnswer, newPassword) => {
+  const data = await apiFetch("/users/reset-password", {
+    method: "POST",
+    body: JSON.stringify({
+      userId,
+      securityAnswer,
+      newPassword,
+    }),
+  });
+
+  // Guardar token y usuario en localStorage (auto-login después del reset)
+  if (data.token) {
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("user", JSON.stringify(data.user));
+  }
+
+  return data;
 };
