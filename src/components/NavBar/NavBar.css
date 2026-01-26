@@ -1,27 +1,28 @@
+/* NavBar Component - Uses global variables from style.css */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: var(--spacing-md) var(--spacing-xl);
+  background: var(--gradient-purple);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: relative;
 }
 
 .navbar-logo a {
-  font-size: 1.4rem;
+  font-size: var(--font-size-xl);
   font-weight: bold;
   color: white;
   text-decoration: none;
   letter-spacing: 0.5px;
-  transition: opacity 0.3s ease;
+  transition: var(--transition-fast);
 }
 
 .navbar-logo a:hover {
   opacity: 0.8;
 }
 
-/* Hamburger button (solo visible en móvil) */
+/* Hamburger button (only visible on mobile) */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -38,8 +39,8 @@
   width: 25px;
   height: 3px;
   background: white;
-  border-radius: 3px;
-  transition: all 0.3s ease;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
 }
 
 .hamburger.active span:nth-child(1) {
@@ -54,7 +55,7 @@
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Menu  */
+/* Menu */
 .navbar-menu {
   display: flex;
   gap: 1.2rem;
@@ -66,9 +67,9 @@
   color: white;
   text-decoration: none;
   padding: 0.5rem 0.9rem;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
   font-size: 0.95rem;
 }
 
@@ -89,14 +90,14 @@
 
 .navbar-register:hover {
   background: white;
-  color: #667eea;
+  color: var(--color-primary);
 }
 
 /* Auth section */
 .navbar-auth {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--spacing-md);
 }
 
 .user-info {
@@ -108,15 +109,15 @@
 .user-name {
   color: white;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: var(--font-size-base);
 }
 
 .admin-badge {
   background: rgba(255, 215, 0, 0.9);
-  color: #333;
+  color: var(--color-text-dark);
   padding: 0.25rem 0.6rem;
-  border-radius: 12px;
-  font-size: 0.7rem;
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-xs);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -126,18 +127,18 @@
   background: rgba(255, 255, 255, 0.2);
   color: white;
   border: 2px solid white;
-  padding: 0.45rem 1rem;
-  border-radius: 6px;
+  padding: 0.45rem var(--spacing-md);
+  border-radius: var(--radius-sm);
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: "Roboto", sans-serif;
-  font-size: 0.9rem;
+  transition: var(--transition-fast);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
 }
 
 .logout-btn:hover {
   background: white;
-  color: #667eea;
+  color: var(--color-primary);
   transform: translateY(-2px);
 }
 
@@ -153,13 +154,13 @@
     right: -100%;
     width: 280px;
     height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-purple);
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
-    padding: 5rem 1.5rem 2rem;
+    padding: 5rem var(--spacing-lg) var(--spacing-xl);
     gap: 0.5rem;
-    transition: right 0.3s ease;
+    transition: right var(--transition-fast);
     z-index: 1000;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
     margin-left: 0;
@@ -170,7 +171,7 @@
   }
 
   .navbar-link {
-    padding: 0.8rem 1rem;
+    padding: var(--spacing-sm) var(--spacing-md);
     text-align: left;
     width: 100%;
   }
@@ -182,9 +183,9 @@
   .navbar-auth {
     flex-direction: column;
     align-items: stretch;
-    gap: 0.8rem;
-    margin-top: 1rem;
-    padding-top: 1rem;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
   }
 

@@ -1,3 +1,9 @@
+/* FormField Component
+ * All form styles have been consolidated into style.css
+ * under the "Forms" section with CSS variables.
+ * kept as a reference.
+ * The global .form-group styles in style.css handle all form fields.
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -30,4 +36,4 @@
 
 .form-group textarea {
   min-height: 100px;
-}
+} /*

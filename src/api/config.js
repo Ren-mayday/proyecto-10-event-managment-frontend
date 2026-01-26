@@ -1,5 +1,7 @@
 // URL base de tu backend
-export const API_URL = "http://localhost:4000/api/v1";
+export const API_URL = import.meta.env.PROD
+  ? "proyecto-10-event-management-backen.vercel.app"
+  : "http://localhost:4000/api/v1";
 
 // Función helper para hacer fetch con configuración común
 export const apiFetch = async (endpoint, options = {}) => {

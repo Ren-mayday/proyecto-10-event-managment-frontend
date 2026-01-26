@@ -1,6 +1,92 @@
-/* ======================
-   IMPORTS & RESET
-   ====================== */
+/* CSS VARIABLES */
+:root {
+  /* Colors */
+  --color-primary: #667eea;
+  --color-primary-dark: #764ba2;
+  --color-secondary: #f093fb;
+  --color-secondary-dark: #f5576c;
+  --color-danger: #ff6b6b;
+  --color-danger-dark: #ee5a6f;
+  --color-success: #38a169;
+  --color-success-bg: #e6ffed;
+  --color-success-text: #22543d;
+  --color-error: #c33;
+  --color-error-bg: #fee;
+  --color-warning: #ffd700;
+  --color-warning-light: #ffed4e;
+
+  /* Text Colors */
+  --color-text-primary: #2d3748;
+  --color-text-secondary: #4a5568;
+  --color-text-tertiary: #718096;
+  --color-text-light: #666;
+  --color-text-dark: #333;
+
+  /* Background Colors */
+  --color-bg-page: #f0f0f0;
+  --color-bg-card: white;
+  --color-bg-section: #f7fafc;
+  --color-bg-light: #f5f5f5;
+  --color-bg-input: #e0e0e0;
+
+  /* Gradients */
+  --gradient-purple: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-pink: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-danger: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  --gradient-gold: linear-gradient(135deg, #ffd700, #ffed4e);
+  --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+
+  /* Spacing */
+  --spacing-xs: 0.4rem;
+  --spacing-sm: 0.8rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 50%;
+  --radius-pill: 20px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.1);
+  --shadow-primary: 0 5px 15px rgba(102, 126, 234, 0.3);
+  --shadow-secondary: 0 5px 15px rgba(245, 87, 108, 0.3);
+  --shadow-danger: 0 5px 15px rgba(255, 107, 107, 0.3);
+  --shadow-hover: 0 12px 24px rgba(102, 126, 234, 0.15);
+
+  /* Transitions */
+  --transition-fast: 0.3s ease;
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Typography */
+  --font-family: "Roboto", sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.85rem;
+  --font-size-base: 0.9rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.1rem;
+  --font-size-xl: 1.4rem;
+  --font-size-2xl: 1.6rem;
+  --font-size-3xl: 1.8rem;
+  --font-size-4xl: 2rem;
+  --font-size-5xl: 2.5rem;
+
+  /* Layout */
+  --container-sm: 420px;
+  --container-md: 500px;
+  --container-lg: 650px;
+  --container-xl: 850px;
+  --container-2xl: 1200px;
+}
+
+/* IMPORTS & RESET */
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 * {
@@ -9,12 +95,12 @@
   list-style: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: var(--font-family);
   scroll-behavior: smooth;
 }
 
 body {
-  background: #f0f0f0;
+  background: var(--color-bg-page);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -30,108 +116,153 @@ body {
   flex: 1;
 }
 
-/* ======================
-   UTILITY CLASSES
-   ====================== */
+/* UTILITY CLASSES */
 
 /* Containers */
 .page-container {
   min-height: calc(100vh - 140px);
-  padding: 1.5rem 1rem;
-  background: #f0f0f0;
+  padding: var(--spacing-lg) var(--spacing-md);
+  background: var(--color-bg-page);
 }
 
 .page-container-centered {
   min-height: calc(100vh - 140px);
-  padding: 1.5rem 1rem;
+  padding: var(--spacing-lg) var(--spacing-md);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .content-wrapper {
-  max-width: 1200px;
+  max-width: var(--container-2xl);
   margin: 0 auto;
 }
 
 /* Cards */
 .card {
-  background: white;
+  background: var(--color-bg-card);
   padding: 1.2rem;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
   width: 100%;
 }
 
 .card-sm {
-  max-width: 420px;
-  padding: 1.5rem 1.2rem;
+  max-width: var(--container-sm);
+  padding: var(--spacing-lg) 1.2rem;
 }
+
 .card-md {
-  max-width: 500px;
+  max-width: var(--container-md);
 }
+
 .card-lg {
-  max-width: 650px;
+  max-width: var(--container-lg);
 }
+
 .card-xl {
-  max-width: 850px;
+  max-width: var(--container-xl);
 }
 
 .card-title {
-  margin: 0 0 0.8rem 0;
-  font-size: 1.4rem;
-  color: #333;
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: var(--font-size-xl);
+  color: var(--color-text-dark);
   text-align: center;
 }
 
 .card-subtitle {
   text-align: center;
-  color: #666;
+  color: var(--color-text-light);
   margin: 0 0 1.2rem 0;
-  font-size: 0.9rem;
+  font-size: var(--font-size-base);
 }
 
 /* Forms */
 .form {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: var(--spacing-sm);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--color-text-dark);
+  font-size: var(--font-size-sm);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 0.75rem;
+  border: 2px solid var(--color-bg-input);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-family: var(--font-family);
+  transition: var(--transition-fast);
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group textarea {
+  min-height: 100px;
+}
+
+.form-hint {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  font-style: italic;
 }
 
 .file-input {
   padding: 0.5rem !important;
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: var(--font-size-sm);
 }
 
 /* Messages */
 .error-message {
-  background: #fee;
-  color: #c33;
+  background: var(--color-error-bg);
+  color: var(--color-error);
   padding: 0.7rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
   margin: 0;
-  border-left: 4px solid #c33;
+  border-left: 4px solid var(--color-error);
 }
 
 .success-message {
-  background: #e6ffed;
-  color: #22543d;
+  background: var(--color-success-bg);
+  color: var(--color-success-text);
   padding: 0.7rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
   margin: 0;
-  border-left: 4px solid #38a169;
+  border-left: 4px solid var(--color-success);
 }
 
 .error-text {
   color: #e53e3e;
   font-weight: 500;
 }
+
 .info-text {
-  color: #718096;
+  color: var(--color-text-tertiary);
 }
+
 .text-center {
   text-align: center;
 }
@@ -139,16 +270,16 @@ body {
 /* Buttons */
 .button-group {
   display: flex;
-  gap: 1rem;
+  gap: var(--spacing-md);
   margin-top: 0.5rem;
 }
 
 /* Links */
 .link {
-  color: #667eea;
+  color: var(--color-primary);
   text-decoration: none;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
 }
 
 .link:hover {
@@ -157,14 +288,32 @@ body {
 
 .link-section {
   text-align: center;
-  margin-top: 1.5rem;
-  color: #666;
+  margin-top: var(--spacing-lg);
+  color: var(--color-text-light);
+}
+
+/* Auth Links (common across Login, Register, ForgotPassword, ResetPassword) */
+.auth-link {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  color: var(--color-text-light);
+}
+
+.auth-link a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.auth-link a:hover {
+  text-decoration: underline;
 }
 
 /* Grids */
 .grid {
   display: grid;
-  gap: 1.5rem;
+  gap: var(--spacing-lg);
 }
 
 .grid-auto {
@@ -173,8 +322,8 @@ body {
 
 /* Avatars */
 .avatar {
-  border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: var(--radius-full);
+  background: var(--gradient-purple);
   background-size: cover;
   background-position: center;
   display: flex;
@@ -182,7 +331,7 @@ body {
   justify-content: center;
   color: white;
   font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-md);
 }
 
 .avatar-sm {
@@ -190,16 +339,19 @@ body {
   height: 80px;
   font-size: 1.8rem;
 }
+
 .avatar-md {
   width: 100px;
   height: 100px;
   font-size: 2rem;
 }
+
 .avatar-lg {
   width: 120px;
   height: 120px;
   font-size: 2.5rem;
 }
+
 .avatar-xl {
   width: 150px;
   height: 150px;
@@ -209,59 +361,57 @@ body {
 /* Badges */
 .badge {
   padding: 0.3rem 0.8rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-xs);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .badge-admin {
-  background: linear-gradient(135deg, #ffd700, #ffed4e);
-  color: #333;
+  background: var(--gradient-gold);
+  color: var(--color-text-dark);
 }
 
 .badge-gradient {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-purple);
   color: white;
 }
 
 /* Sections */
 .section {
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background: #f7fafc;
-  border-radius: 8px;
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-md);
+  background: var(--color-bg-section);
+  border-radius: var(--radius-md);
 }
 
 .section-title {
-  margin: 0 0 1rem 0;
-  font-size: 1.1rem;
-  color: #2d3748;
-  border-bottom: 2px solid #667eea;
+  margin: 0 0 var(--spacing-md) 0;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-primary);
+  border-bottom: 2px solid var(--color-primary);
   padding-bottom: 0.5rem;
 }
 
 /* Gradients */
 .gradient-purple {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-purple);
 }
 
 .gradient-pink {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: var(--gradient-pink);
 }
 
-/* ======================
-   RESPONSIVE
-   ====================== */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .page-container,
   .page-container-centered {
-    padding: 1rem;
+    padding: var(--spacing-md);
   }
 
   .card {
-    padding: 1.5rem;
+    padding: var(--spacing-lg);
   }
 
   .card-sm,
@@ -288,6 +438,7 @@ body {
     height: 100px;
     font-size: 2rem;
   }
+
   .avatar-xl {
     width: 120px;
     height: 120px;

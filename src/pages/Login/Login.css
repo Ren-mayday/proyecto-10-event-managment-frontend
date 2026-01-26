@@ -1,61 +1,63 @@
-/* Solo estilos únicos de Login - clases globales para lo demás */
+/* Login Page - Uses global variables and form styles from style.css */
 .login-container {
   min-height: calc(100vh - 140px);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem 1rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: var(--spacing-lg) var(--spacing-md);
+  background: var(--gradient-purple);
 }
 
 .login-card {
-  background: white;
-  padding: 2rem 1.5rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  background: var(--color-bg-card);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
   width: 100%;
   max-width: 450px;
 }
 
 .login-card h2 {
   margin: 0 0 0.5rem 0;
-  font-size: 1.8rem;
-  color: #333;
+  font-size: var(--font-size-3xl);
+  color: var(--color-text-dark);
   text-align: center;
 }
 
-/* Espaciado específico para el formulario de login */
+.login-subtitle {
+  text-align: center;
+  color: var(--color-text-light);
+  margin: 0 0 var(--spacing-lg) 0;
+  font-size: 0.95rem;
+}
+
 .login-form {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
 }
 
-.login-subtitle {
-  text-align: center;
-  color: #666;
-  margin: 0 0 1.5rem 0;
-  font-size: 0.95rem;
+.forgot-password-link {
+  text-align: right;
+  margin-top: -0.5rem;
+  font-size: var(--font-size-sm);
 }
 
-.register-link {
-  text-align: center;
-  margin-top: 1.5rem;
-  color: #666;
-}
-
-.register-link a {
-  color: #667eea;
+.forgot-password-link a {
+  color: var(--color-primary);
   text-decoration: none;
   font-weight: 600;
+  transition: var(--transition-fast);
 }
 
-.register-link a:hover {
+.forgot-password-link a:hover {
   text-decoration: underline;
 }
 
+/* Uses global .auth-link from style.css for register link */
+
 @media (max-width: 768px) {
   .login-container {
-    padding: 1rem;
+    padding: var(--spacing-md);
   }
 }

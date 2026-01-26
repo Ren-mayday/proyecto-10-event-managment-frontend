@@ -63,7 +63,7 @@ export const isAdmin = () => {
 
 // Request password reset - paso 1: obtener pregunta de seguridad
 export const requestPasswordReset = async (identifier) => {
-  const data = await apiFetch("users/forgot-password", {
+  const data = await apiFetch("/users/forgot-password", {
     method: "POST",
     body: JSON.stringify({
       userName: identifier,

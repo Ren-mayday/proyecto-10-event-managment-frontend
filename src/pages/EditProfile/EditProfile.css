@@ -1,29 +1,29 @@
+/* EditProfile Page - Uses global card styles from style.css */
 .edit-profile-container {
   min-height: calc(100vh - 140px);
-  padding: 1.5rem 1rem;
+  padding: var(--spacing-lg) var(--spacing-md);
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
 
 .edit-profile-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  background: var(--color-bg-card);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
   width: 100%;
   max-width: 550px;
   margin: 0.5rem 0;
 }
 
 .edit-profile-card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.6rem;
-  color: #333;
+  margin: 0 0 var(--spacing-md) 0;
+  font-size: var(--font-size-2xl);
+  color: var(--color-text-dark);
   text-align: center;
 }
 
-/* Espaciado para el formulario */
 .edit-profile-form {
   display: flex;
   flex-direction: column;
