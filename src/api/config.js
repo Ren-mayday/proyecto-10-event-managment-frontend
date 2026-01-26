@@ -1,6 +1,6 @@
 // URL base de tu backend
 export const API_URL = import.meta.env.PROD
-  ? "proyecto-10-event-management-backend.vercel.app"
+  ? "event-management-backendqueer-tea-club.vercel.app"
   : "http://localhost:4000/api/v1";
 
 // Función helper para hacer fetch con configuración común
