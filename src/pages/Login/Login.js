@@ -54,6 +54,15 @@ const Login = () => {
 
   passwordGroup.append(passwordLabel, passwordInput);
 
+  const forgotPasswordLink = document.createElement("p");
+  forgotPasswordLink.className = "forgot-password-link";
+  forgotPasswordLink.innerHTML = `<a href="/forgot-password">Forgot password?</a>`;
+
+  forgotPasswordLink.querySelector("a").addEventListener("click", (e) => {
+    e.preventDefault();
+    navigate("/forgot-password");
+  });
+
   // Error message
   const errorMsg = document.createElement("p");
   errorMsg.className = "error-message";
@@ -77,7 +86,7 @@ const Login = () => {
     navigate("/register");
   });
 
-  form.append(emailGroup, passwordGroup, errorMsg, submitBtn);
+  form.append(emailGroup, passwordGroup, forgotPasswordLink, errorMsg, submitBtn);
   card.append(title, subtitle, form, registerLink);
   section.append(card);
 

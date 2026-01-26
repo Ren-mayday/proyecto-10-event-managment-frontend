@@ -71,6 +71,65 @@ const Register = () => {
 
   passwordGroup.append(passwordLabel, passwordInput);
 
+  // Security Question
+  const questionGroup = document.createElement("div");
+  questionGroup.className = "form-group";
+
+  const questionLabel = document.createElement("label");
+  questionLabel.textContent = "Security Question";
+  questionLabel.setAttribute("for", "security-question");
+
+  const questionSelect = document.createElement("select");
+  questionSelect.id = "security-question";
+  questionSelect.name = "security-question";
+  questionSelect.required = true;
+
+  const defaultOption = document.createElement("option");
+  defaultOption.value = "";
+  defaultOption.textContent = "Select a security question";
+  defaultOption.disabled = true;
+  defaultOption.selected = true;
+
+  const questions = [
+    "What was the name of your first pet?",
+    "What city were you born in?",
+    "What is your mother's maiden name?",
+    "What was the name of your elementary school?",
+    "What is your favorite book?",
+    "What was your childhood nickname?",
+  ];
+
+  questionSelect.append(defaultOption);
+  questions.forEach((q) => {
+    const option = document.createElement("option");
+    option.value = q;
+    option.textContent = q;
+    questionSelect.append(option);
+  });
+
+  questionGroup.append(questionLabel, questionSelect);
+
+  // Security Answer
+  const answerGroup = document.createElement("div");
+  answerGroup.className = "form-group";
+
+  const answerLabel = document.createElement("label");
+  answerLabel.textContent = "Security Answer";
+  answerLabel.setAttribute("for", "security-answer");
+
+  const answerInput = document.createElement("input");
+  answerInput.type = "text";
+  answerInput.id = "security-answer";
+  answerInput.name = "security-answer";
+  answerInput.placeholder = "Your answer (remember this!)";
+  answerInput.required = true;
+
+  const answerHint = document.createElement("small");
+  answerHint.className = "form-hint";
+  answerHint.textContent = "This will be used to recover your password if you forget it";
+
+  answerGroup.append(answerLabel, answerInput, answerHint);
+
   // Error message
   const errorMsg = document.createElement("p");
   errorMsg.className = "error-message";
@@ -80,7 +139,7 @@ const Register = () => {
   const submitBtn = Button({
     text: "Register",
     type: "submit",
-    variant: "secondary", // Rosa para Register
+    variant: "secondary",
     fullWidth: true,
   });
 
@@ -94,7 +153,8 @@ const Register = () => {
     navigate("/login");
   });
 
-  form.append(usernameGroup, emailGroup, passwordGroup, errorMsg, submitBtn);
+  // Añadir los nuevos campos al form
+  form.append(usernameGroup, emailGroup, passwordGroup, questionGroup, answerGroup, errorMsg, submitBtn);
   card.append(title, subtitle, form, loginLink);
   section.append(card);
 
@@ -105,9 +165,11 @@ const Register = () => {
     const userName = usernameInput.value.trim();
     const email = emailInput.value.trim();
     const password = passwordInput.value;
+    const securityQuestion = questionSelect.value;
+    const securityAnswer = answerInput.value.trim();
 
     // Validación básica
-    if (!userName || !email || !password) {
+    if (!userName || !email || !password || !securityQuestion || !securityAnswer) {
       showError(errorMsg, "Please fill in all fields");
       return;
     }
@@ -117,13 +179,18 @@ const Register = () => {
       return;
     }
 
+    if (securityAnswer.length < 2) {
+      showError(errorMsg, "Security answer must be at least 2 characters");
+      return;
+    }
+
     // Deshabilitar botón mientras registra
     submitBtn.disabled = true;
     submitBtn.textContent = "Creating account...";
     errorMsg.style.display = "none";
 
     try {
-      await register(userName, email, password);
+      await register(userName, email, password, securityQuestion, securityAnswer);
       navigate("/");
     } catch (error) {
       showError(errorMsg, error.message || "Registration failed. Email might already exist.");

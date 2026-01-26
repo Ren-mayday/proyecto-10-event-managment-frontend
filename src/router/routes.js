@@ -7,6 +7,8 @@ import EventDetail from "../pages/EventDetail/EventDetail";
 import EditEvent from "../pages/EditEvent/EditEvent";
 import MyProfile from "../pages/MyProfile/MyProfile";
 import EditProfile from "../pages/EditProfile/EditProfile";
+import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
+import ResetPassword from "../pages/ResetPassword/ResetPassword";
 
 export const routes = [
   {
@@ -48,5 +50,15 @@ export const routes = [
     path: "/edit-profile",
     text: "Edit Profile",
     page: EditProfile,
+  },
+  {
+    path: "/forgot-password",
+    text: "Forgot Password",
+    page: ForgotPassword,
+  },
+  {
+    path: "/reset-password",
+    text: "Reset Password",
+    page: ResetPassword,
   },
 ];
