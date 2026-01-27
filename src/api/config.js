@@ -2,7 +2,7 @@
 export const API_URL =
   import.meta.env.VITE_API_URL ||
   (import.meta.env.PROD
-    ? "https://event-management-backend-queer-tea-club.vercel.app/api/v1"
+    ? "https://event-management-backend-queer-tea.vercel.app/api/v1"
     : "http://localhost:4000/api/v1");
 
 // Función helper para hacer fetch con configuración común
