@@ -1,4 +1,4 @@
-// URL base de tu backend
+// URL base de backend
 export const API_URL = import.meta.env.PROD
   ? "https://event-management-backend-queer-tea-club.vercel.app/api/v1"
   : "http://localhost:4000/api/v1";
