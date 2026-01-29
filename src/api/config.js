@@ -1,9 +1,5 @@
 // URL base de backend
-export const API_URL =
-  import.meta.env.VITE_API_URL ||
-  (import.meta.env.PROD
-    ? "https://event-management-backend-queer-tea.vercel.app/api/v1"
-    : "http://localhost:4000/api/v1");
+export const API_URL = "https://event-management-backend-queer-tea.vercel.app/api/v1";
 
 // Función helper para hacer fetch con configuración común
 export const apiFetch = async (endpoint, options = {}) => {
