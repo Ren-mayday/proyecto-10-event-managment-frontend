@@ -38,8 +38,14 @@ async function loadEventAndCreateForm(container, eventId) {
     const event = await getEventById(eventId);
     const user = getCurrentUser();
 
-    // Verificar permisos (creador o admin)
-    const isCreator = user?.id === event.createdBy;
+    // DEBUG - ELIMINAR LUEGO
+    console.log("user:", JSON.stringify(user));
+    console.log("event.createdBy:", JSON.stringify(event.createdBy));
+
+    // Normalizar ambos IDs a string para comparar
+    const creatorId = (event.createdBy?._id || event.createdBy)?.toString();
+    const userId = (user?.id || user?._id)?.toString();
+    const isCreator = userId === creatorId;
     const isAdmin = user?.role === "admin";
 
     if (!isCreator && !isAdmin) {
