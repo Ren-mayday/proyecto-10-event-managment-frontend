@@ -1,11 +1,11 @@
-import { API_URL, apiFetch } from "./config";
+import { apiFetch, API_URL } from "./config";
 
 // Obtener todos los eventos
 export const getEvents = async () => {
   return await apiFetch("/events");
 };
 
-// Obtener un evento (por ID)
+// Obtener un evento por ID
 export const getEventById = async (id) => {
   return await apiFetch(`/events/${id}`);
 };
@@ -16,7 +16,7 @@ export const createEvent = async (eventData) => {
 
   // Si es FormData (tiene imagen), usar fetch directamente
   if (eventData instanceof FormData) {
-    const response = await apiFetch(`${API_URL}/events`, {
+    const response = await fetch(`${API_URL}/events`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -30,11 +30,11 @@ export const createEvent = async (eventData) => {
       throw new Error(data.message || "Something went wrong");
     }
 
-    return;
+    return data;
   }
 
   // Si es JSON normal, usar apiFetch
-  return await apiFetch("/event", {
+  return await apiFetch("/events", {
     method: "POST",
     body: JSON.stringify(eventData),
   });
@@ -44,9 +44,9 @@ export const createEvent = async (eventData) => {
 export const updateEvent = async (id, eventData) => {
   const token = localStorage.getItem("token");
 
-  // Si es FormData (tiene image), usar fetch directamente
+  // Si es FormData (tiene imagen), usar fetch directamente
   if (eventData instanceof FormData) {
-    const response = await fetch(`${API_URL}/event/${id}`, {
+    const response = await fetch(`${API_URL}/events/${id}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -63,6 +63,7 @@ export const updateEvent = async (id, eventData) => {
     return data;
   }
 
+  // Si es JSON normal, usar apiFetch
   return await apiFetch(`/events/${id}`, {
     method: "PUT",
     body: JSON.stringify(eventData),
