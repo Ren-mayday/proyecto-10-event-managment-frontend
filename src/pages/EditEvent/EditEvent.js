@@ -184,6 +184,7 @@ async function loadEventAndCreateForm(container, eventId) {
       const formData = new FormData();
       formData.append("title", titleField.input.value.trim());
       formData.append("date", dateField.input.value);
+      formData.append("time", timeField.input.value);
       formData.append("location", locationField.input.value.trim());
       formData.append("description", descriptionField.input.value.trim());
 
