@@ -195,8 +195,14 @@ async function handleAttendance(eventId, isAttending) {
       throw new Error("Failed to update attendance");
     }
 
-    // Recargar la página para ver cambios
-    window.location.reload();
+    // re-renderizar la página
+    const section = document.querySelector(".event-detail-container");
+    if (section) {
+      section.innerHTML = "";
+      const loadingComponent = Loading("Updating");
+      section.append(loadingComponent);
+      await loadEventDetail(section, eventId);
+    }
   } catch (error) {
     alert(`Error: ${error.message}`);
   }
