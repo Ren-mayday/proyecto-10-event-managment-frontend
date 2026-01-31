@@ -16,17 +16,21 @@ export function renderRoute() {
 
   let route = routes.find((r) => r.path === path);
 
-  // Si no encuentra la ruta exacta, busca rutas dinámicas
-  if (!route && path.startsWith("/event/")) {
-    route = routes.find((r) => r.path === "/event");
+  // Si no encuentra la ruta exacta, buscar rutas dinámicas
+  if (!route) {
+    // Rutas con parámetros dinámicos
+    if (path.startsWith("/event/")) {
+      route = routes.find((r) => r.path === "/event");
+    } else if (path.startsWith("/edit-event/")) {
+      route = routes.find((r) => r.path === "/edit-event");
+    } else if (path.startsWith("/reset-password/")) {
+      route = routes.find((r) => r.path === "/reset-password");
+    } else if (path.startsWith("/user/")) {
+      route = routes.find((r) => r.path === "/user");
+    }
   }
 
-  // edit-event/:id
-  if (!route && path.startsWith("/edit-event/")) {
-    route = routes.find((r) => r.path === "/edit-event");
-  }
-
-  // Si aún no hay ruta, usa Home
+  // Si aún no hay ruta, usa Home (404)
   if (!route) {
     route = routes[0];
   }
