@@ -1,4 +1,5 @@
 import { getEventById, deleteEvent } from "../../api/events";
+import { API_URL } from "../../api/config";
 import { navigate } from "../../router/navigation";
 import { isAuthenticated, getCurrentUser } from "../../api/auth";
 import { Button } from "../../components/Button/Button";
@@ -183,7 +184,7 @@ async function handleAttendance(eventId, isAttending) {
     const token = localStorage.getItem("token");
     const method = isAttending ? "DELETE" : "POST";
 
-    const response = await fetch(`http://localhost:4000/api/v1/events/${eventId}/attend`, {
+    const response = await fetch(`${API_URL}/events/${eventId}/attend`, {
       method,
       headers: {
         Authorization: `Bearer ${token}`,

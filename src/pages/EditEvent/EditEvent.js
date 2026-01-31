@@ -1,4 +1,4 @@
-import { getEventById } from "../../api/events";
+import { getEventById, updateEvent } from "../../api/events";
 import { navigate } from "../../router/navigation";
 import { isAuthenticated, getCurrentUser } from "../../api/auth";
 import { FormField } from "../../components/FormField/FormField";
@@ -7,7 +7,7 @@ import { Loading } from "../../components/Loading/Loading";
 import "./EditEvent.css";
 
 const EditEvent = () => {
-  // Verificar si está autenticado
+  // Verificar si está autentificado
   if (!isAuthenticated()) {
     navigate("/login");
     return document.createElement("div");
@@ -171,7 +171,7 @@ async function loadEventAndCreateForm(container, eventId) {
       descriptionField.group,
       imageGroup,
       errorMsg,
-      buttonGroup
+      buttonGroup,
     );
 
     card.append(title, form);
@@ -197,7 +197,7 @@ async function loadEventAndCreateForm(container, eventId) {
       errorMsg.style.display = "none";
 
       try {
-        await updateEventWithFormData(eventId, formData);
+        await updateEvent(eventId, formData);
         navigate(`/event/${eventId}`);
       } catch (error) {
         showError(errorMsg, error.message || "Failed to update event");
@@ -208,27 +208,6 @@ async function loadEventAndCreateForm(container, eventId) {
   } catch (error) {
     container.innerHTML = `<p class="error">Error loading event: ${error.message}</p>`;
   }
-}
-
-// Función para actualizar evento con FormData
-async function updateEventWithFormData(eventId, formData) {
-  const token = localStorage.getItem("token");
-
-  const response = await fetch(`http://localhost:4000/api/v1/events/${eventId}`, {
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    body: formData,
-  });
-
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.message || data || "Something went wrong");
-  }
-
-  return data;
 }
 
 function showError(element, message) {

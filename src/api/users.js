@@ -1,4 +1,4 @@
-import { apiFetch } from "./config";
+import { apiFetch, API_URL } from "./config";
 
 // Obtener perfil de un usuario por userName
 export const getUserProfile = async (userName) => {
@@ -11,7 +11,7 @@ export const updateUserProfile = async (userId, userData) => {
 
   // Si hay avatar, usar FormData
   if (userData instanceof FormData) {
-    const response = await fetch(`http://localhost:4000/api/v1/users/${userId}`, {
+    const response = await fetch(`${API_URL}/users/${userId}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,

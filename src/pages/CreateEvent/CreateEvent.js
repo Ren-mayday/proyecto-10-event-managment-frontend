@@ -30,7 +30,7 @@ const CreateEvent = () => {
     type: "text",
     id: "title",
     name: "title",
-    placeholder: "e.g., Pride March 2025",
+    placeholder: "e.g., Pride June 2026",
     required: true,
   });
 
@@ -58,7 +58,7 @@ const CreateEvent = () => {
     type: "text",
     id: "location",
     name: "location",
-    placeholder: "e.g., Plaça de Catalunya, Barcelona",
+    placeholder: "e.g., Plaça Catalunya, Barcelona",
     required: true,
   });
 
@@ -122,7 +122,7 @@ const CreateEvent = () => {
     descriptionField.group,
     imageGroup,
     errorMsg,
-    buttonGroup
+    buttonGroup,
   );
 
   card.append(title, form);
@@ -150,8 +150,7 @@ const CreateEvent = () => {
     errorMsg.style.display = "none";
 
     try {
-      // Nota: necesitamos adaptar la función createEvent para FormData
-      await createEventWithFormData(formData);
+      await createEvent(formData);
       navigate("/");
     } catch (error) {
       showError(errorMsg, error.message || "Failed to create event");
@@ -162,27 +161,6 @@ const CreateEvent = () => {
 
   return section;
 };
-
-// Función para enviar FormData (con imagen)
-async function createEventWithFormData(formData) {
-  const token = localStorage.getItem("token");
-
-  const response = await fetch("http://localhost:4000/api/v1/events", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    body: formData, // No ponemos Content-Type porque FormData lo maneja
-  });
-
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.message || "Something went wrong");
-  }
-
-  return data;
-}
 
 function showError(element, message) {
   element.textContent = message;
