@@ -38,10 +38,6 @@ async function loadEventAndCreateForm(container, eventId) {
     const event = await getEventById(eventId);
     const user = getCurrentUser();
 
-    // DEBUG - ELIMINAR LUEGO
-    console.log("user:", JSON.stringify(user));
-    console.log("event.createdBy:", JSON.stringify(event.createdBy));
-
     // Normalizar ambos IDs a string para comparar
     const creatorId = (event.createdBy?._id || event.createdBy)?.toString();
     const userId = (user?.id || user?._id)?.toString();
